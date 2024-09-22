@@ -66,6 +66,15 @@ class HomeVC: UIViewController, UITextFieldDelegate {
         return tableView
     }()
     
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.hidesWhenStopped = true
+        indicator.transform = CGAffineTransform(scaleX: 1, y: 1)
+        indicator.color = Constants.Colors.color_neonBlue
+        return indicator
+    }()
+    
     /// Текст для алерта
     private let textAlert = "Произошла какая-то ошибка. Мы не смогли найти кинчик, который вы хотите. Проверьте подключение к интернету и повторите попытку."
     
@@ -83,18 +92,21 @@ class HomeVC: UIViewController, UITextFieldDelegate {
         view.addSubview(searchIconButton)
         view.addSubview(sortingIconButton)
         view.addSubview(yearPickerButton)
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
         
         setConstrains()
         addActions()
         
         
-        
+        /// Отображние популярных фильмов для того чтобы экрна не был пустым
         self.apiUtils.getMovies_Popular(apiKey: Constants.API.apiKey) { result in
             switch result {
             case .success(let fetchedMovies):
                 self.movies = fetchedMovies
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    self.activityIndicator.stopAnimating()
                 }
             case .failure(let error):
                 print("Error fetching movies: \(error)")
@@ -254,6 +266,9 @@ class HomeVC: UIViewController, UITextFieldDelegate {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.topAnchor.constraint(equalTo: yearPickerButton.bottomAnchor, constant: 20),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
         ])
     }

@@ -10,24 +10,33 @@ import UIKit
 
 // MARK: структура для парсинга фильмов в таблицах
 struct MovieModel: Codable {
+    
     /// ID фильма
     let kinopoiskId: Int
     let imdbId: String?
+    
     /// Название на русском
     let nameRu: String?
+    
     /// Название на английском
     let nameEn: String?
+    
     /// Оригинальное название
     let nameOriginal: String?
+    
     /// Страны
     let countries: [Country]
+    
     /// Жанры
     let genres: [Genre]
+    
     /// Рейтинг кинопоиска
     let ratingKinopoisk: Double?
     let ratingImdb: Double?
+    
     /// Год выпуска
     let year: Int
+    
     /// Тип ( FILM, VIDEO, TV_SERIES, MINI_SERIES, TV_SHOW )
     let type: String
     

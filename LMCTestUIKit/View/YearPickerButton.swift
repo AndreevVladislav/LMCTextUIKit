@@ -27,7 +27,7 @@ class YearPickerButton: UIButton, UIPickerViewDelegate, UIPickerViewDataSource {
 
     // Настройка кнопки
     private func setupButton() {
-        self.setTitle("Выберите год", for: .normal)
+        self.setTitle("Выбрать год", for: .normal)
         self.setTitleColor(UIColor.lightGray, for: .normal)
         self.backgroundColor = .clear
         self.layer.cornerRadius = 5

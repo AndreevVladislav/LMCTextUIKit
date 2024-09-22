@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct MovieResponse: Codable {
-    let total: Int
-    let totalPages: Int
-    let items: [MovieModel]
-}
-
 struct GenericResponse<T: Codable>: Codable {
     let total: Int
     let totalPages: Int

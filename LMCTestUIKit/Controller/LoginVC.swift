@@ -55,7 +55,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         return button
     }()
     
-    /// false - пароль не виден
+    /// false - пароль невиден
     /// true - пароль виден
     private var flag_PassVisib = false
     
@@ -110,7 +110,11 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             } else {
                 // Регистрация нового пользователя
                 self.loginUtils.saveLogin(login: login, password: password)
-                APIUtils.showAlert(on: self, message: "Регистрация успешна")
+//                APIUtils.showAlert(on: self, message: "Регистрация успешна")
+                let vc = HomeVC()
+                vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .crossDissolve
+                self.present(vc, animated: true)
             }
         }), for: .touchUpInside)
         
