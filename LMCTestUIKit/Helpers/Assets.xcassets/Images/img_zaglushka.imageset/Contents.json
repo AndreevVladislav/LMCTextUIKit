@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "no-poster.gif.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
