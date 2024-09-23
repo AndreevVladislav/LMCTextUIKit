@@ -136,6 +136,7 @@ class MovieInfoVC: UIViewController{
         text.text = genreApi
         text.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         text.textColor = UIColor.lightGray
+        text.numberOfLines = 0
         return text
     }()
 
@@ -156,6 +157,7 @@ class MovieInfoVC: UIViewController{
         text.text = countryApi
         text.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         text.textColor = UIColor.lightGray
+        text.numberOfLines = 0
         return text
     }()
     
